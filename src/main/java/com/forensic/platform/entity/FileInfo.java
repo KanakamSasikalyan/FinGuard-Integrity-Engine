@@ -17,6 +17,7 @@ public class FileInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String filename;
     private String ctime;
     private String mtime;
     private String ltime;

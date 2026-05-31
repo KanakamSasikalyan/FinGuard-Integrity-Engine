@@ -31,7 +31,7 @@ public class FileInfoServiceImpl implements FileInfoService {
     }
 
     @Override
-    public FileInfoDto getInfo(String fileName) {
+    public FileInfoDto getInfo(String fileName, String file) {
 
         Path path = Paths.get(fileName);
 
@@ -40,10 +40,12 @@ public class FileInfoServiceImpl implements FileInfoService {
                     BasicFileAttributes.class);
 
             FileInfo fileInfo = new FileInfo();
+            fileInfo.setFilename(file);
             fileInfo.setCtime(getString(attr.creationTime()));
             fileInfo.setMtime(getString(attr.lastModifiedTime()));
             fileInfo.setLtime(getString(attr.lastAccessTime()));
             fileInfo.setSize(attr.size());
+            fileInfo.setFileHash(getFileHash(fileName));
 
             fileInfoRepository.save(fileInfo);
 
@@ -62,7 +64,7 @@ public class FileInfoServiceImpl implements FileInfoService {
         return fileHash;
     }
 
-    public static String hashfile(String path){
+    public String hashfile(String path){
 
         try{
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");

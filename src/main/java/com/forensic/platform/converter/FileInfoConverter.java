@@ -10,10 +10,10 @@ public class FileInfoConverter {
     public FileInfoDto fileInfoEntityToDto(FileInfo fileInfo){
 
         FileInfoDto fileInfoDto = new FileInfoDto();
-        fileInfoDto.setCtime(fileInfoDto.getCtime());
-        fileInfoDto.setMtime(fileInfoDto.getMtime());
-        fileInfoDto.setLtime(fileInfoDto.getLtime());
-        fileInfoDto.setSize(fileInfoDto.getSize());
+        fileInfoDto.setCtime(fileInfo.getCtime());
+        fileInfoDto.setMtime(fileInfo.getMtime());
+        fileInfoDto.setLtime(fileInfo.getLtime());
+        fileInfoDto.setSize(fileInfo.getSize());
 
         return fileInfoDto;
 

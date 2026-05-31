@@ -18,8 +18,8 @@ public class FileInfoController {
     FileInfoService fileInfoService;
 
     @GetMapping("/info")
-    public ResponseEntity<FileInfoDto> getInfo(@RequestParam("path") String path){
-        FileInfoDto fileInfoDto = fileInfoService.getInfo(path);
+    public ResponseEntity<FileInfoDto> getInfo(@RequestParam("path") String path, @RequestParam("file") String file){
+        FileInfoDto fileInfoDto = fileInfoService.getInfo(path, file);
 
         ResponseEntity<FileInfoDto> fileInfoDtoResponseEntity = new ResponseEntity<>(fileInfoDto, HttpStatus.OK);
         return fileInfoDtoResponseEntity;
